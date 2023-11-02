@@ -3,13 +3,14 @@
     style="height: 100%"
   >
     <v-card
-      flat=""
+      flat
       class="d-flex px-2"
       rounded="0"
       color="grey-lighten-4"
     >
       <v-card
         elevation="0"
+        @click="pageController.goTab(t.name)"
         :key="t.name"
         v-for="t in tabs"
         :color="pageController.activeTabName===t.name?'grey-darken-4':'grey-lighten-3'"
@@ -24,6 +25,7 @@
       </v-card>
     </v-card>
     <v-card
+      flat=""
       rounded="0"
       min-height="calc(100vh - 64px - 45px)"
     >

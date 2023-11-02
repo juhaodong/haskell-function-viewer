@@ -18,6 +18,6 @@ export async function getPackageByPage(page, searchQuery) {
 
 
 export async function getPackageDetail(uri) {
-  return await hillo.get(`${proxy}https://hackage.haskell.org/package/${uri}/docs/doc-index.json`)
+  return await hillo.get(`${proxy}https://hackage.haskell.org${uri}/docs/doc-index.json`)
 }
 

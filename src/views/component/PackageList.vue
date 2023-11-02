@@ -17,14 +17,14 @@ defineProps({
     <v-card
       rounded="xl"
       variant="flat"
-      :color="controller.packageIsActive(p.name.display)?'grey-darken-4':'grey-lighten-5'"
+      :color="controller.packageIsActive(p.name.uri)?'grey-darken-4':'grey-lighten-5'"
       class="pa-4 px-6 mb-2"
-      @click="controller.togglePackageUri(p.name.display)"
+      @click="controller.togglePackageUri(p.name.uri)"
       v-for="p in list"
       :key="p.name.display"
     >
       <div class="d-flex align-baseline">
-        <div>
+        <div class="flex-grow-1">
           <div class="text-body-1 font-weight-medium">
             {{ p.name.display }}<span class="text-body-2 text-grey-darken-1">
               @v{{ p.lastVersion }}
@@ -34,7 +34,6 @@ defineProps({
             {{ p.description }}
           </div>
         </div>
-        <v-spacer />
         <div
           style="width: 120px"
           class="text-grey-darken-1 text-body-2 text-right text-no-wrap flex-shrink-0"

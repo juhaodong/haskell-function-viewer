@@ -4,7 +4,7 @@
 
 <template>
   <div
-    style="min-height: 400px"
+    style="min-height: 80vh"
     class="d-flex flex-column align-center justify-center"
   >
     <v-progress-circular indeterminate />

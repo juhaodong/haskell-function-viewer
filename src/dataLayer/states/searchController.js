@@ -21,7 +21,7 @@ export const useSearchController =
       },
       getters: {
         activePackages() {
-          return this.packageList.filter(it => this.packageIsActive(it.name.display))
+          return this.packageList.filter(it => this.packageIsActive(it.name.uri))
         },
         usingFilters() {
           return this.ratingLimit > 0 || this.downloadLimit > 0
