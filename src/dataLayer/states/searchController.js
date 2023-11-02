@@ -1,5 +1,6 @@
 import {defineStore} from "pinia";
-import {getAllPackages} from "@/dataLayer/api/hackageApi";
+
+import {getAllPackages} from "@/dataLayer/repository/hackageRepo";
 
 export const useSearchController =
   defineStore('search-fragment-controller',
