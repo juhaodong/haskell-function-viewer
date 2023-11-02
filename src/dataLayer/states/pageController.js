@@ -1,5 +1,6 @@
 import {defineStore} from "pinia";
 import {usePreviewPageController} from "@/dataLayer/states/previewPageController";
+import {useSearchController} from "@/dataLayer/states/searchController";
 
 export const TabNames = {
   Browse: 'Browse',
@@ -13,7 +14,12 @@ export const usePageController = defineStore('page-controller', {
     goPreview(packages) {
       const preview = usePreviewPageController()
       preview.init(packages)
+      const search = useSearchController()
+      search.showCartDialog = false
       this.activeTabName = TabNames.Preview
+    },
+    goBack() {
+      this.activeTabName = TabNames.Browse
     }
   }
 })

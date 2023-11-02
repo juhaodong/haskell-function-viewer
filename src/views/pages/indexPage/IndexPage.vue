@@ -23,14 +23,17 @@
         </div>
       </v-card>
     </v-card>
-    <div class="pa-4">
+    <v-card
+      rounded="0"
+      min-height="calc(100vh - 64px - 45px)"
+    >
       <template v-if="pageController.activeTabName===TabNames.Browse">
         <search-fragment />
       </template>
       <template v-else-if="pageController.activeTabName===TabNames.Preview">
         <preview-fragment />
       </template>
-    </div>
+    </v-card>
   </div>
 </template>
 

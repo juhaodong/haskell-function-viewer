@@ -1,5 +1,6 @@
 import {defineStore} from "pinia";
-import {getAllPackages} from "@/dataLayer/api/hackageApi";
+
+import {getAllPackages} from "@/dataLayer/repository/hackageRepo";
 
 export const useSearchController =
   defineStore('search-fragment-controller',
@@ -20,7 +21,7 @@ export const useSearchController =
       },
       getters: {
         activePackages() {
-          return this.packageList.filter(it => this.packageIsActive(it.name.uri))
+          return this.packageList.filter(it => this.packageIsActive(it.name.display))
         },
         usingFilters() {
           return this.ratingLimit > 0 || this.downloadLimit > 0

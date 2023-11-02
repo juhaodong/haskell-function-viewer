@@ -1,9 +1,9 @@
 <script setup>
 import {onMounted} from "vue";
 import PackageList from "@/views/component/PackageList.vue";
-import {hackageFilterDesc} from "@/dataLayer/api/hackageApi";
 import {useSearchController} from "@/dataLayer/states/searchController";
 import {usePageController} from "@/dataLayer/states/pageController";
+import {hackageFilterDesc} from "@/dataLayer/repository/hackageRepo";
 
 const controller = useSearchController()
 const page = usePageController()
@@ -18,7 +18,7 @@ async function doSearch() {
 </script>
 
 <template>
-  <div>
+  <div class="pa-6">
     <div class="d-flex">
       <v-text-field
         class="mr-2"
