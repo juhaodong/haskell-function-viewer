@@ -18,7 +18,7 @@ async function doSearch() {
 </script>
 
 <template>
-  <div>
+  <div class="pa-6">
     <div class="d-flex">
       <v-text-field
         class="mr-2"

@@ -12,7 +12,7 @@ export async function getPackageByPage(page, searchQuery) {
     "page": page,
     "sortColumn": "default",
     "sortDirection": "ascending",
-    "searchQuery": searchQuery
+    "searchQuery": searchQuery+'(ageOfLastUpload < 1y)'
   })
 }
 
