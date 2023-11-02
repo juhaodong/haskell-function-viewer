@@ -30,7 +30,7 @@ function removePrefix(name) {
           variant="flat"
           class="pa-2 px-4 mx-2 rounded-b-lg"
           :key="item"
-          v-for="(item,i) in previewPageController.selectedItems"
+          v-for="(item,i) in previewPageController.selectedPackages"
         >
           {{ removePrefix(item) }}
         </v-card>
@@ -101,7 +101,7 @@ function removePrefix(name) {
       rounded="0"
       max-width="300"
       width="30%"
-      color="black"
+      color="grey-darken-4"
       class="pa-6 rounded-s-xl"
       style="position: fixed;right: 0;top: 20%"
     >
@@ -158,6 +158,19 @@ function removePrefix(name) {
           <div>{{ previewPageController.showingInfo?.moduleInfo?.length }} <span class="text-body-2">modules</span></div>
         </div>
       </div>
+    </v-card>
+    <v-card
+      v-if="previewPageController.selectedModules.length>0"
+      color="grey-darken-4"
+      elevation="16"
+      rounded="0"
+      style="position: fixed;right: 0;bottom: 0"
+      class="pa-4 d-flex align-center rounded-ts-xl pr-8 px-12 pt-6 text-h4 font-weight-black"
+    >
+      {{ previewPageController.selectedModules.length }} Selected
+      <v-icon class="ml-8">
+        mdi-arrow-right
+      </v-icon>
     </v-card>
   </div>
 </template>

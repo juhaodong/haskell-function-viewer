@@ -61,7 +61,8 @@ export const usePreviewPageController =
       }
 
       return {
-        selectedItems: selectedPackages,
+        selectedPackages,
+        selectedModules,
         minEntityFilter,
         toggleModules,
         moduleIsActive,
