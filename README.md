@@ -24,6 +24,7 @@ yarn dev
 
 - [**doc**](doc) - this is all the document related to this project.
     - [Email Record](doc/emails.md)
+    - [Daily Log](doc/Daily-Log.md)
 - [**proxy**](proxy) - the php proxy script to bypass the hackage api cors issue
 - [**public**](public)
 - [**src**](src)

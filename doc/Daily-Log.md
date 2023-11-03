@@ -1,7 +1,7 @@
-# Daily Log
- this is the supplementary log for daily work.
+# Daily Log 🚀
+ this is the supplementary log for github commit history:D.
  
-## 1.11.2023
+## 📅 1.11.2023
 Started to find the correct way to download all the package on the hackage website. During that, I found some api on  https://hackage.haskell.org/api, so i decide to firstly give this api a closer look.
 
 Sadly, this api is very bad documented, no one can gather any useful information with it. The whole structure of the API is not so clear and most importantly, no example request and response is provided. So I had to try this api one by one using postman, but without and clue, the blindly attempts result only a few usable APIs.
@@ -23,7 +23,7 @@ the first and second method still need to cache the scraped info somehow, and pr
 
 I created a project on my github and then do the scaffold for the project, and write all api that I know to the js file.
 
-## 2.11.2023
+## 📅 2.11.2023
 
 started to create the search and preview page, found the hackage has cors limitations, solved it by a php proxy, currently installed on a random server. During the first step of digging the api, I found that not all the package has the doc-index.json type document.
 
@@ -31,17 +31,28 @@ That is only for the package that using haddock on higher version, So I add a fi
 
 I refactor some code from yesterday and then make the page cleaner.
 
-I tried to build some filters, this is the data that I can catch from the hackdoc json files, not really come out any ideas.
-![img_3.png](img_3.png)
+I tried to build some filters, this is the data that I can catch from the haddock json files, not really come out any ideas.
+![img_3.png](pictures/img_3.pngimg_3.png)
 
 So I just make two filter, one is to filter down that too small modules, I think to use it in the exam means it has to have some complexity.
 
 another one is the to filter all the module that has at least one of type with :: annotation, I believe this is all the function needed in Haskell.
 
-I start to thinking how I should present this webpage to you, so I make it available on Vercel, the link for it is
+I start to thinking how I should present this webpage to you, so I make it available on Vercel, the link for it is https://haskellsig.vercel.app/ so Haskell-signature, maybe we can use a better name for that.
 
 
-#
+
+
+
+## 📅 3.11.2023
+
+Today, the output part, I looked into the info in the haddock json file, and I decide to using a dom parser for that.
+
+![img_4.png](pictures/img_4.pngimg_4.png)
+
+For the things that i don't know how to deal with it, I give a empty string as output, and show some error message on the webpage. 
+
+Not really encounter any issue, I cleaned up the code, and decide to report to you.
 
 
 
