@@ -4,12 +4,11 @@ import PackageList from "@/views/component/PackageList.vue";
 import {useSearchController} from "@/dataLayer/states/searchPage/searchController";
 import {usePageController} from "@/dataLayer/states/pageController";
 import {hackageFilterDesc} from "@/dataLayer/repository/hackageRepo";
-
-import LoadingProvider from "@/views/component/LoadingProvider.vue";
 import {useSearchFilter} from "@/dataLayer/states/searchPage/useSearchFilter";
 import PageSteper from "@/views/component/PageSteper.vue";
 import PageFrame from "@/views/component/PageFrame.vue";
 import NiceHeader from "@/views/component/decoration/NiceHeader.vue";
+import {useDisplay} from "vuetify";
 
 const searchController = useSearchController()
 const filterController = useSearchFilter()
@@ -27,6 +26,7 @@ async function doSearch() {
 const displayPageItems = computed(() => {
   return Array.from(Array(searchController.pageCount).keys()).map((i) => i + 1)
 })
+const {mobile}=useDisplay()
 
 
 </script>
@@ -41,7 +41,7 @@ const displayPageItems = computed(() => {
       />
     </template>
     <template #title>
-      <nice-header>
+      <nice-header v-if="!mobile">
         <template #icon>
           mdi-format-list-bulleted
         </template>
@@ -62,7 +62,7 @@ const displayPageItems = computed(() => {
 
       <v-btn
         class="mr-2"
-        size="large"
+        :size="mobile?'':'large'"
         :color="filterController.usingFilters?'primary':''"
         variant="flat"
         @click="filterController.showFilter()"
@@ -78,7 +78,7 @@ const displayPageItems = computed(() => {
         flat=""
         :disabled="searchController.loading"
         @click="doSearch"
-        size="large"
+        :size="mobile?'':'large'"
       >
         <template #prepend>
           🔍
@@ -91,7 +91,7 @@ const displayPageItems = computed(() => {
     />
   </page-frame>
   <v-card
-    v-if="searchController.selectedPackage.length>0"
+    v-if="searchController.selectedPackage.length>0&&!searchController.showCartDialog"
     color="grey-darken-3"
     elevation="16"
     @click="searchController.showCart()"
@@ -105,17 +105,21 @@ const displayPageItems = computed(() => {
     {{ searchController.selectedPackage.length }} Selected
   </v-card>
   <v-dialog
+    :fullscreen="mobile"
     max-width="600"
     v-model="searchController.showCartDialog"
   >
     <v-card
       color="black"
-      rounded="xl"
+      :rounded="mobile?'0':'xl'"
     >
       <div class="pa-6">
         <div class="text-h6 d-flex align-center">
-          <v-icon class="mr-4">
-            mdi-dots-grid
+          <v-icon
+            class="mr-4"
+            @click="searchController.showCartDialog=false"
+          >
+            mdi-close
           </v-icon>
           Selected Packages
           <v-spacer />
@@ -139,7 +143,7 @@ const displayPageItems = computed(() => {
           </template>
         </div>
         <package-list
-          class="mt-12"
+          class="mt-8"
           :list="searchController.activePackages"
         />
         <v-btn @click="page.goPreview(searchController.selectedPackage)">

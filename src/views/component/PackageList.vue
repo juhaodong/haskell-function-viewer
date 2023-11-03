@@ -3,8 +3,11 @@
 import dayjs from "dayjs";
 
 import {useSearchController} from "@/dataLayer/states/searchPage/searchController";
+import {useDisplay} from "vuetify";
 
 const controller = useSearchController()
+const {mobile}=useDisplay()
+
 defineProps({
   list: Array,
 })
@@ -40,26 +43,28 @@ defineProps({
             {{ p.description }}
           </div>
         </div>
-        <div
-          :class="controller.packageIsActive(p.name.uri)?'':'text-grey-darken-1 '"
-          style="width: 120px"
-          class="text-body-2 text-right text-no-wrap flex-shrink-0"
-        >
-          <v-icon class="mr-2">
-            mdi-update
-          </v-icon>
-          {{ dayjs(p.lastUpload).format('DD.MM.YYYY') }}
-        </div>
-        <div
-          style="width: 80px"
-          :class="controller.packageIsActive(p.name.uri)?'':'text-grey-darken-1 '"
-          class="text-right text-body-2 flex-shrink-0"
-        >
-          <v-icon class="mr-2">
-            mdi-download
-          </v-icon>
-          {{ p.downloads }}
-        </div>
+        <template v-if="!mobile">
+          <div
+            :class="controller.packageIsActive(p.name.uri)?'':'text-grey-darken-1 '"
+            style="width: 120px"
+            class="text-body-2 text-right text-no-wrap flex-shrink-0"
+          >
+            <v-icon class="mr-2">
+              mdi-update
+            </v-icon>
+            {{ dayjs(p.lastUpload).format('DD.MM.YYYY') }}
+          </div>
+          <div
+            style="width: 80px"
+            :class="controller.packageIsActive(p.name.uri)?'':'text-grey-darken-1 '"
+            class="text-right text-body-2 flex-shrink-0"
+          >
+            <v-icon class="mr-2">
+              mdi-download
+            </v-icon>
+            {{ p.downloads }}
+          </div>
+        </template>
       </div>
     </v-card>
   </div>
