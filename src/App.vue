@@ -34,5 +34,7 @@ a {
 ::-webkit-scrollbar {
   display: none;
 }
-
+.v-spacer {
+  flex-grow: 1;
+}
 </style>
