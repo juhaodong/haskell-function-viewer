@@ -10,12 +10,16 @@ export async function getDocsMap() {
   return docMap
 }
 
-export async function getAllPackages(searchQuery = "") {
+export async function getAllPackages(searchQuery = "", page = 0) {
   const doc = await getDocsMap()
-  console.log(doc)
-  const res = ((await getPackageByPage(0, searchQuery))?.pageContents ?? []).filter(it => doc[it.name.display + '-' + it.lastVersion])
-  console.log(res)
-  return res
+  const res = await getPackageByPage(page, searchQuery)
+  return {
+    result:
+      (res?.pageContents ?? []).filter(it => doc[it.name.display + '-' + it.lastVersion]),
+    numberOfResults: res?.numberOfResults
+  }
+
+
 }
 
 export const hackageFilterDesc = " <h5>Usage</h5>" +

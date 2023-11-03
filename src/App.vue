@@ -31,4 +31,8 @@ a {
   margin-left: 24px;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 </style>

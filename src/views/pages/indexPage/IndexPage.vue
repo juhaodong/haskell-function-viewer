@@ -35,6 +35,9 @@
       <template v-else-if="pageController.activeTabName===TabNames.Preview">
         <preview-fragment />
       </template>
+      <template v-else>
+        <output-fragment />
+      </template>
     </v-card>
   </div>
 </template>
@@ -43,6 +46,7 @@
 import {TabNames, usePageController} from "@/dataLayer/states/pageController";
 import SearchFragment from "@/views/pages/indexPage/fragment/SearchFragment.vue";
 import PreviewFragment from "@/views/pages/indexPage/fragment/PreviewFragment.vue";
+import OutputFragment from "@/views/pages/indexPage/fragment/OutputFragment.vue";
 
 const pageController = usePageController()
 const tabs = [

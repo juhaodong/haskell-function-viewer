@@ -2,7 +2,7 @@
 
 import dayjs from "dayjs";
 
-import {useSearchController} from "@/dataLayer/states/searchController";
+import {useSearchController} from "@/dataLayer/states/searchPage/searchController";
 
 const controller = useSearchController()
 defineProps({
@@ -17,9 +17,9 @@ defineProps({
     <v-card
       rounded="xl"
       variant="flat"
-      :color="controller.packageIsActive(p.name.uri)?'grey-darken-4':'grey-lighten-5'"
+      :color="controller.packageIsActive(p.name.uri)?'grey-darken-4':''"
       class="pa-4 px-6 mb-2"
-      @click="controller.togglePackageUri(p.name.uri)"
+      @click="controller.togglePackageUri(p)"
       v-for="p in list"
       :key="p.name.display"
     >

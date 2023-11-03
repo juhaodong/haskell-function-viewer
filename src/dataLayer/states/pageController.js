@@ -1,6 +1,7 @@
 import {defineStore} from "pinia";
 import {usePreviewPageController} from "@/dataLayer/states/previewPageController";
-import {useSearchController} from "@/dataLayer/states/searchController";
+import {useSearchController} from "@/dataLayer/states/searchPage/searchController";
+import {useOutputController} from "@/dataLayer/states/outputPageController";
 
 export const TabNames = {
   Browse: 'Browse',
@@ -14,10 +15,18 @@ export const usePageController = defineStore('page-controller', {
     async goPreview() {
       const preview = usePreviewPageController()
       const search = useSearchController()
-      console.log(search.selectedPackageUri,'123')
       this.activeTabName = TabNames.Preview
-      await preview.init(search.selectedPackageUri)
+      await preview.init(search.selectedPackage)
       search.showCartDialog = false
+
+    },
+    async goOutput() {
+      const preview = usePreviewPageController()
+      const output
+        = useOutputController()
+      output.modules.push(...preview.selectedModules)
+      this.activeTabName = TabNames.Output
+      preview.showCartDialog = false
 
     },
     goSearch() {
@@ -32,6 +41,8 @@ export const usePageController = defineStore('page-controller', {
           this.goPreview();
           break;
         case TabNames.Output:
+          this.goOutput();
+          break;
       }
     }
   }
